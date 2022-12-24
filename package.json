@@ -1,0 +1,30 @@
+{
+  "name": "apollo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.1.1",
+    "apollo-server-express": "^3.11.1",
+    "body-parser": "^1.20.1",
+    "cloudinary": "^1.32.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-yoga": "^2.13.13",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.2"
+  }
+}
