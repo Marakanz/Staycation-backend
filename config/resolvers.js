@@ -18,13 +18,42 @@ const resolvers = {
     },
     stories: async(parent) => {
       return await Story.find()
-    }
-  },
-
-  Mutation: {
+    },
     getHotel: async (parent, args) => {
       return await Hotel.findById(args.id);
     },
+    getBooking: async (parent, args) => {
+      return await Booking.findById(args.id);
+    },
+    getUserBookings: async (parent, args) => {
+      try {
+        const bookings = await Booking.find({ userId: args.userId });
+        return bookings;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    getUser: async (parent, args) => {
+      try {
+        const user = await User.findById(args.id);
+        return user;
+      } catch {
+        console.log(e);
+      }
+    },
+    getStory: async(parent, args) => {
+      try {
+        const story = await Story.findById(args.id);
+        return user;
+      } catch {
+        console.log(e);
+      }
+    }
+  },
+
+
+  Mutation: {
+   
     addHotel: async (parent, args) => {
         const hotel = new Hotel({
           name: args.name,
@@ -68,17 +97,6 @@ const resolvers = {
     },
 
     //BOOKING MUTATION
-    getBooking: async (parent, args) => {
-      return await Booking.findById(args.id);
-    },
-    getUserBookings: async (parent, args) => {
-      try {
-        const bookings = await Booking.find({ userId: args.userId });
-        return bookings;
-      } catch (e) {
-        console.log(e);
-      }
-    },
     addBooking: async (parent, args) => {
       try {
         const booking = new Booking({
@@ -193,14 +211,7 @@ const resolvers = {
       const result = " User has been deleted";
       return result;
     },
-    getUser: async (parent, args) => {
-      try {
-        const user = await User.findById(args.id);
-        return user;
-      } catch {
-        console.log(e);
-      }
-    },
+  
 
     //STORY MUTATION
     addStory: async (parent, args) => {
@@ -239,14 +250,6 @@ const resolvers = {
         console.log(e);
       }
     },
-    getStory: async(parent, args) => {
-      try {
-        const story = await Story.findById(args.id);
-        return user;
-      } catch {
-        console.log(e);
-      }
-    }
 
   },
 };

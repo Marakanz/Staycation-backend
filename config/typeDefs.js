@@ -73,6 +73,23 @@ const typeDefs = gql`
     stories: [Story!]!
   }
 
+  type Query {
+    getHotel(id: ID!) : Hotel!
+  }
+
+  type Query {
+    getBooking(id: ID!) : Booking!
+  }
+  type Query {
+    getUserBookings(userId: ID!): [Booking!]!
+  }
+  type Query {
+    getUser(id: ID!): User!
+  }
+  type Query {
+    getStory(id: ID!): Story!
+  }
+
   #MUTATIONS
   #HOTEL MUTATIONS
   type Mutation {
@@ -87,10 +104,7 @@ const typeDefs = gql`
   type Mutation {
     deleteHotel(id: ID!): String!
   }
-  type Mutation {
-    getHotel(id: ID!) : Hotel!
-  }
-
+  
   #BOOKING MUTATIONS
   type Mutation {
     addBooking(name: String!, email: String!, phone: String!, userId: String, 
@@ -104,12 +118,7 @@ const typeDefs = gql`
   type Mutation {
     deleteBooking(id: ID!): String!
   }
-  type Mutation {
-    getBooking(id: ID!) : Booking!
-  }
-  type Mutation {
-    getUserBookings(userId: ID!): [Booking!]!
-  }
+ 
 
   #AUTH MUTATIONS
   type Mutation {
@@ -128,15 +137,9 @@ const typeDefs = gql`
     deleteUser(id: ID!): String!
   }
 
-  type Mutation {
-    getUser(id: ID!): User!
-  }
+  
 
   #STORY MUTATIONS
-
-  type Mutation {
-    getStory(id: ID!): Story!
-  }
 
   type Mutation {
     updateStory(id: ID!, name: String, title: String, body: String): Story!
