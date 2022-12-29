@@ -168,7 +168,6 @@ const resolvers = {
         user.password,
         process.env.PASS_WORD
       );
-
       const realPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
       realPassword !== args.password && console.log("Wrong credentials!");
 
