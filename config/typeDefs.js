@@ -122,7 +122,7 @@ const typeDefs = gql`
 
   #AUTH MUTATIONS
   type Mutation {
-    register(email: String!, password: String!): User!
+    register(email: String!, password: String!, admin: Boolean!): User!
   }
 
   type Mutation {
