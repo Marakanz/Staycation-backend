@@ -90,6 +90,10 @@ const typeDefs = gql`
     getStory(id: ID!): Story!
   }
 
+  type Query {
+    login (email: String!, password: String!): User!
+  }
+
   #MUTATIONS
   #HOTEL MUTATIONS
   type Mutation {
@@ -123,10 +127,6 @@ const typeDefs = gql`
   #AUTH MUTATIONS
   type Mutation {
     register(email: String!, password: String!): User!
-  }
-
-  type Mutation {
-    login (email: String!, password: String!): User!
   }
 
   #USER MUTATIONS
