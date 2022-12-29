@@ -49,31 +49,7 @@ const resolvers = {
         console.log(e);
       }
     },
-    login: async (parent, args) => {
-      const user = await User.findOne({ email: args.email });
-      !user && console.log("User does not exist");
-
-      const hashedPassword = CryptoJS.AES.decrypt(
-        user.password,
-        process.env.PASS_WORD
-      );
-
-      const realPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
-      realPassword !== args.password && console.log("Wrong credentials!");
-
-      const accessToken = jwt.sign(
-        {
-          id: user._id,
-          isAdmin: user.isAdmin,
-        },
-        process.env.JWT_PASSWORD,
-        { expiresIn: "3d" }
-      );
-
-      const { password, ...others } = user._doc;
-      console.log({ ...others, accessToken });
-      return { ...others, accessToken };
-    },
+   
   },
 
 
@@ -183,6 +159,31 @@ const resolvers = {
       } catch (e) {
         console.log(e);
       }
+    },
+    login: async (parent, args) => {
+      const user = await User.findOne({ email: args.email });
+      !user && console.log("User does not exist");
+
+      const hashedPassword = CryptoJS.AES.decrypt(
+        user.password,
+        process.env.PASS_WORD
+      );
+
+      const realPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+      realPassword !== args.password && console.log("Wrong credentials!");
+
+      const accessToken = jwt.sign(
+        {
+          id: user._id,
+          isAdmin: user.isAdmin,
+        },
+        process.env.JWT_PASSWORD,
+        { expiresIn: "3d" }
+      );
+
+      const { password, ...others } = user._doc;
+      console.log({ ...others, accessToken });
+      return { ...others, accessToken };
     },
     
 
