@@ -57,7 +57,7 @@ app.use(
 );
 
 // Modified server startup
-await new Promise((resolve) => httpServer.listen({ port: 443 }, resolve));
+await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 
-console.log(`🚀 Server ready at http://localhost:443/`);
+console.log(`🚀 Server ready at https://localhost:443/`);
 
