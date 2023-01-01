@@ -13,13 +13,12 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import authRoute from "./routes/auth.js"
 
 console.log(process.env.NODE_ENV)
 
 
 
-connectDB();
+
   // Passing an ApolloServer instance to the `startStandaloneServer` function:
   //  1. creates an Express app
   //  2. installs your ApolloServer instance as middleware
@@ -41,6 +40,7 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 // Ensure we wait for our server to start
+await connectDB();
 await server.start();
 
 // Set up our Express middleware to handle CORS, body parsing,
