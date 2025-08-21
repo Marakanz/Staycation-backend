@@ -1,0 +1,66 @@
+{
+        "_id": "63adb6de87f6fcb13633e938",
+        "email": "superman@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add74987f6fcb13633e93d",
+        "email": "batman@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add7bf87f6fcb13633e93f",
+        "email": "batman@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add7ee87f6fcb13633e941",
+        "email": "flash@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add81f87f6fcb13633e943",
+        "email": "flash@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add91a87f6fcb13633e945",
+        "email": "johnsnow@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63add92787f6fcb13633e947",
+        "email": "johnsnow@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63b863a721ad9e8098aa9e73",
+        "email": "nightwing@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63b863a8c872938f93611687",
+        "email": "nightwing@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "63b863ab84b162b8b7a129c8",
+        "email": "nightwing@gmail.com",
+        "isAdmin": false,
+        "accessToken": null
+      },
+      {
+        "_id": "68182b8a56e08796940fad57",
+        "email": "juwonakande07@gmail.com",
+        "isAdmin": true,
+        "accessToken": null
+      }

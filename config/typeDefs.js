@@ -23,16 +23,15 @@ const typeDefs = gql`
     features: [String]
   }
 
-
   input singleBookingInput {
     hotel: inputHotel
     nights: String
   }
 
-   type singleBooking {
+  type singleBooking {
     hotel: Hotel
     nights: String
-   }
+  }
 
   type Booking {
     id: ID
@@ -42,6 +41,7 @@ const typeDefs = gql`
     userId: String
     booking: singleBooking
   }
+  
   type Story {
     id: ID
     name: String
@@ -52,108 +52,86 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
-    password: String
     isAdmin: Boolean
     accessToken: String
+    firstName: String
+    lastName: String
+    image: String
+    googleId: String
+    createdAt: String
+    updatedAt: String
   }
 
-  #QUERIES
+  # Better auth response type
+  type AuthResponse {
+    success: Boolean!
+    message: String
+    user: User
+    token: String
+  }
+
+  # Input types for better validation
+  input RegisterInput {
+    email: String!
+    password: String!
+    firstName: String
+    lastName: String
+    admin: Boolean
+  }
+
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
+  # COMBINED QUERIES - This was the main issue!
   type Query {
     hotels: [Hotel!]!
-  }
-
-  type Query {
     bookings: [Booking!]!
-  }
-
-  type Query {
-    users: [User!]!
-  }
-  type Query {
+    getUsers: [User!]!
     stories: [Story!]!
-  }
-
-  type Query {
-    getHotel(id: ID!) : Hotel!
-  }
-
-  type Query {
-    getBooking(id: ID!) : Booking!
-  }
-  type Query {
+    getHotel(id: ID!): Hotel!
+    getBooking(id: ID!): Booking!
     getUserBookings(userId: ID!): [Booking!]!
-  }
-  type Query {
     getUser(id: ID!): User!
-  }
-  type Query {
     getStory(id: ID!): Story!
+    getAuthStatus: AuthResponse!
   }
 
-  #MUTATIONS
-  #HOTEL MUTATIONS
+  # COMBINED MUTATIONS
   type Mutation {
+    # HOTEL MUTATIONS
     addHotel(name: String!, location: String!, price: String!, image: String, 
         desc: String, features: [String]): Hotel!
-  }
-  type Mutation {
-    updateHotel(id: ID!,name: String, location: String, price: String, image: String, 
-      desc: String, features: [String]): Hotel!
-  }
-
-  type Mutation {
+    updateHotel(id: ID!, name: String, location: String, price: String, image: String, 
+      description: String, features: [String]): Hotel!
     deleteHotel(id: ID!): String!
-  }
-  
-  #BOOKING MUTATIONS
-  type Mutation {
+    
+    # BOOKING MUTATIONS
     addBooking(name: String!, email: String!, phone: String!, userId: String, 
         booking: singleBookingInput): Booking!
-  }
-  type Mutation {
-    updateBooking(id: ID!,name: String, email: String, phone: String, userId: String, 
+    updateBooking(id: ID!, name: String, email: String, phone: String, userId: String, 
       booking: singleBookingInput): Booking!
-  }
-
-  type Mutation {
     deleteBooking(id: ID!): String!
-  }
- 
+   
+    # AUTH MUTATIONS - IMPROVED
+    register(input: RegisterInput!): User!
+    login(input: LoginInput!): User!
+    # Alternative: if you prefer individual parameters
+    registerUser(email: String!, password: String!, admin: Boolean): User!
+    loginUser(email: String!, password: String!): User!
+    googleAuth(tokenId: String!): AuthResponse!
+    setUserAdmin(userId: ID!, isAdmin: Boolean!): User!
 
-  #AUTH MUTATIONS
-  type Mutation {
-    register(email: String!, password: String!, admin: Boolean!): User!
-  }
-
-  type Mutation {
-    login (email: String!, password: String!): User!
-  }
-
-  #USER MUTATIONS
-  type Mutation {
+    # USER MUTATIONS
     updateUser(id: ID!, email: String, password: String): User!
-  }
-  type Mutation {
     deleteUser(id: ID!): String!
-  }
 
-  
-
-  #STORY MUTATIONS
-
-  type Mutation {
-    updateStory(id: ID!, name: String, title: String, body: String): Story!
-  }
-
-  type Mutation {
+    # STORY MUTATIONS
     addStory(name: String!, title: String!, body: String!): Story!
-  }
-
-  type Mutation {
+    updateStory(id: ID!, name: String, title: String, body: String): Story!
     deleteStory(id: ID!): String!
   }
-
-  
 `;
 
 export default typeDefs;
