@@ -327,6 +327,7 @@ CORS is configured to allow requests from:
 ### Current Deployment
 The API is currently deployed at: `https://staycation-backend-8tzd.onrender.com/`
 
+
 ## 🧪 Testing
 
 ### GraphQL Playground
