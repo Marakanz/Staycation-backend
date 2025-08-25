@@ -58,7 +58,7 @@ app.use('/auth', authRoutes);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'https://stay-cation.netlify.app',
   credentials: true
 }));
 
